@@ -106,7 +106,7 @@ public class LinkedListDeque<T>{
             return 0;
         }
         linked_node ptr = sentinel;
-        T iter = 0;
+        int iter = 0;
         while (iter <= index){
             ptr = ptr.next;
             ++iter;
