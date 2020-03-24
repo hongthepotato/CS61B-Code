@@ -103,13 +103,13 @@ public class LinkedListDeque<T>{
 
     public T get(int index){
         if (index > size){
-            return 0;
+            return null;
         }
         linked_node ptr = sentinel;
         int iter = 0;
         while (iter <= index){
             ptr = ptr.next;
-            ++iter;
+            iter += 1;
         }
         return ptr.item;
     }
