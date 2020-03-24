@@ -64,7 +64,7 @@ public class ArrayDeque<T> {
     }
 
     public T removeLast(){
-        int num = ary[size - 1];
+        T num = ary[size - 1];
         size -= 1;
         resize();
         return num;
