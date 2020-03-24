@@ -9,7 +9,7 @@ public class LinkedListDeque<T>{
     /* Nested class of the naive recursive linked list as the
     * foundation of linked list deque
     */
-    private static class linked_node{
+    private class linked_node{
         T item;
         private linked_node next;
         private linked_node front;
