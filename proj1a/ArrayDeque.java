@@ -1,30 +1,30 @@
-public class ArrayDeque {
+public class ArrayDeque<T> {
     private int size;
-    private int [] ary;
+    private T [] ary;
 
     /* Constructor function that instantiate data member of ArrayDeque
     * of size and ary*/
     public ArrayDeque(){
         size = 0;
-        ary = new int[8];
+        ary = (T []) new Object[8];
     }
 
     public void resize(){
-        int [] new_ary = new int[2 * size];
+        T [] new_ary = (T [] )new Object[2 * size];
         System.arraycopy(ary, 0, new_ary, 0, size);
         ary = new_ary;
     }
 
     public void reduce(){
         if (ary.length * 0.25 > size){
-            int [] new_ary = new int [(int) (ary.length * 0.5)];
+            T [] new_ary = (T []) new Object[(int) (ary.length * 0.5)];
             System.arraycopy(ary, 0, new_ary, 0, size);
             ary = new_ary;
             return;
         }return;
     }
 
-    public void addLast(int x){
+    public void addLast(T x){
         if (size == ary.length){
             resize();
             size += 1;
@@ -35,8 +35,8 @@ public class ArrayDeque {
         ary[size - 1] = x;
     }
 
-    public void addFirst(int x){
-        int [] new_ary = new int[size + 1];
+    public void addFirst(T x){
+        T [] new_ary = (T [] )new Object[size + 1];
         System.arraycopy(new_ary, 0, ary, 1, size);
         ary = new_ary;
         size += 1;
@@ -56,14 +56,14 @@ public class ArrayDeque {
         System.out.println(ary[i]);
     }
 
-    public int get(int index){
+    public T get(int index){
         if (index >= size){
-            return 0;
+            return null;
         }
         return ary[index];
     }
 
-    public int removeLast(){
+    public T removeLast(){
         int num = ary[size - 1];
         size -= 1;
         resize();
@@ -72,7 +72,7 @@ public class ArrayDeque {
 
     public void removeFirst(){
         size -= 1;
-        int [] new_ary = new int[size];
+        T [] new_ary = (T []) new Object[size];
         System.arraycopy(ary, 1, new_ary, 0, size -1);
         ary = new_ary;
     }
