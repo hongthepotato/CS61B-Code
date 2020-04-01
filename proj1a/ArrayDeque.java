@@ -9,7 +9,7 @@ public class ArrayDeque<T> {
         ary = (T []) new Object[8];
     }
 
-    public void resize(int capacity) {
+    private void resize(int capacity) {
         T [] new_ary = (T []) new Object[capacity];
         System.arraycopy(ary, 0, new_ary, 0, size);
         ary = new_ary;
@@ -28,7 +28,7 @@ public class ArrayDeque<T> {
 
     public void addFirst(T x) {
         T [] new_ary = (T []) new Object[size + 1];
-        System.arraycopy(new_ary, 0, ary, 1, size);
+        System.arraycopy(ary, 0, new_ary, 1, size);
         ary = new_ary;
         size += 1;
         ary[0] = x;
@@ -42,10 +42,9 @@ public class ArrayDeque<T> {
         return size == 0;
     }
 
-    public void printDeque() {
-        for (int i = 0; i <= size - 1; ++i) {
+    public void printDeque(){
+        for (int i = 0; i <= size - 1; ++i)
         System.out.println(ary[i]);
-        }
     }
 
     public T get(int index) {
@@ -55,7 +54,7 @@ public class ArrayDeque<T> {
         return ary[index];
     }
 
-    public T removeLast() {
+    public T removeLast(){
         if (size == 0) {
             return null;
         }
@@ -67,14 +66,14 @@ public class ArrayDeque<T> {
         return num;
     }
 
-    public T removeFirst() {
+    public T removeFirst(){
         if (size == 0) {
             return null;
         }
         T num = ary[0];
         size -= 1;
         T [] new_ary = (T []) new Object[size];
-        System.arraycopy(ary, 1, new_ary, 0, size -1);
+        System.arraycopy(ary, 1, new_ary, 0, size - 1);
         ary = new_ary;
         if (size / ary.length < 0.4){
             resize(size / 2);
