@@ -1,5 +1,3 @@
-import java.util.Objects;
-
 public class ArrayDeque<T> {
     private int size;
     private T [] ary;
@@ -44,9 +42,10 @@ public class ArrayDeque<T> {
         return size == 0;
     }
 
-    public void printDeque(){
-        for (int i = 0; i <= size - 1; ++i)
+    public void printDeque() {
+        for (int i = 0; i <= size - 1; ++i) {
         System.out.println(ary[i]);
+        }
     }
 
     public T get(int index) {
@@ -56,7 +55,7 @@ public class ArrayDeque<T> {
         return ary[index];
     }
 
-    public T removeLast(){
+    public T removeLast() {
         if (size == 0) {
             return null;
         }
@@ -68,7 +67,7 @@ public class ArrayDeque<T> {
         return num;
     }
 
-    public T removeFirst(){
+    public T removeFirst() {
         if (size == 0) {
             return null;
         }
