@@ -11,7 +11,7 @@ public class LinkedListDeque<T> {
         T item;
         private linked_node next;
         private linked_node front;
-        private linked_node (T f, linked_node before, linked_node after){
+        private linked_node (T f, linked_node before, linked_node after) {
             item = f;
             front = before;
             next = after;
@@ -64,7 +64,7 @@ public class LinkedListDeque<T> {
 
     public void printDeque() {
         linked_node p = sentinel;
-        while (p.next != sentinel){
+        while (p.next != sentinel) {
             System.out.print(p.next.item);
             System.out.print(" ");
             p = p.next;
@@ -73,7 +73,7 @@ public class LinkedListDeque<T> {
     /* Update both first and last pointer to sentinel.next and sentinel.front respectively.*/
     public T removeFirst() {
             
-        if (size == 0){
+        if (size == 0) {
             return null;
         }
         size -= 1;
@@ -117,6 +117,6 @@ public class LinkedListDeque<T> {
 
     /* This get recursive function has not been implemented*/
     public T getRecursive(int index) {
-    return null;
+        return null;
     }
 }
