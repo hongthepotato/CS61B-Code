@@ -59,10 +59,10 @@ public class ArrayDeque<T> {
             return null;
         }
         T num = ary[size - 1];
-        size -= 1;
         if (size / ary.length < 0.4) {
             resize(size / 2);
         }
+        size -= 1;
         return num;
     }
 
@@ -71,13 +71,13 @@ public class ArrayDeque<T> {
             return null;
         }
         T num = ary[0];
-        size -= 1;
         T [] new_ary = (T []) new Object[size];
         System.arraycopy(ary, 1, new_ary, 0, size - 1);
         ary = new_ary;
         if (size / ary.length < 0.4){
             resize(size / 2);
         }
+        size -= 1;
         return num;
     }
 }
