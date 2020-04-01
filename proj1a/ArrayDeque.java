@@ -1,32 +1,25 @@
+import java.util.Objects;
+
 public class ArrayDeque<T> {
     private int size;
     private T [] ary;
 
     /* Constructor function that instantiate data member of ArrayDeque
     * of size and ary*/
-    public ArrayDeque(){
+    public ArrayDeque() {
         size = 0;
         ary = (T []) new Object[8];
     }
 
-    public void resize(){
-        T [] new_ary = (T [] )new Object[2 * size];
+    public void resize(int capacity) {
+        T [] new_ary = (T []) new Object[capacity];
         System.arraycopy(ary, 0, new_ary, 0, size);
         ary = new_ary;
     }
 
-    public void reduce(){
-        if (ary.length * 0.25 > size){
-            T [] new_ary = (T []) new Object[(int) (ary.length * 0.5)];
-            System.arraycopy(ary, 0, new_ary, 0, size);
-            ary = new_ary;
-            return;
-        }return;
-    }
-
-    public void addLast(T x){
-        if (size == ary.length){
-            resize();
+    public void addLast(T x) {
+        if (size == ary.length) {
+            resize(size * 2);
             size += 1;
             ary[size - 1] = x;
             return;
@@ -35,19 +28,19 @@ public class ArrayDeque<T> {
         ary[size - 1] = x;
     }
 
-    public void addFirst(T x){
-        T [] new_ary = (T [] )new Object[size + 1];
+    public void addFirst(T x) {
+        T [] new_ary = (T []) new Object[size + 1];
         System.arraycopy(new_ary, 0, ary, 1, size);
         ary = new_ary;
         size += 1;
         ary[0] = x;
     }
 
-    public int size(){
+    public int size() {
         return size;
     }
 
-    public boolean isEmpty(){
+    public boolean isEmpty() {
         return size == 0;
     }
 
@@ -56,24 +49,37 @@ public class ArrayDeque<T> {
         System.out.println(ary[i]);
     }
 
-    public T get(int index){
-        if (index >= size){
+    public T get(int index) {
+        if (index >= size) {
             return null;
         }
         return ary[index];
     }
 
     public T removeLast(){
+        if (size == 0) {
+            return null;
+        }
         T num = ary[size - 1];
         size -= 1;
-        resize();
+        if (size / ary.length < 0.4) {
+            resize(size / 2);
+        }
         return num;
     }
 
-    public void removeFirst(){
+    public T removeFirst(){
+        if (size == 0) {
+            return null;
+        }
+        T num = ary[0];
         size -= 1;
         T [] new_ary = (T []) new Object[size];
         System.arraycopy(ary, 1, new_ary, 0, size -1);
         ary = new_ary;
+        if (size / ary.length < 0.4){
+            resize(size / 2);
+        }
+        return num;
     }
 }
