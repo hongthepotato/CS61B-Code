@@ -27,6 +27,9 @@ public class ArrayDeque<T> {
     }
 
     public void addFirst(T x) {
+        if (size == ary.length) {
+            resize(2 * size);
+        }
         T [] new_ary = (T []) new Object[size + 1];
         System.arraycopy(ary, 0, new_ary, 1, size);
         ary = new_ary;
@@ -59,7 +62,7 @@ public class ArrayDeque<T> {
             return null;
         }
         T num = ary[size - 1];
-        if (size / ary.length < 0.4) {
+        if ((double)size / ary.length < 0.4) {
             resize(size / 2);
         }
         size -= 1;
@@ -74,7 +77,7 @@ public class ArrayDeque<T> {
         T [] new_ary = (T []) new Object[size];
         System.arraycopy(ary, 1, new_ary, 0, size - 1);
         ary = new_ary;
-        if (size / ary.length < 0.4){
+        if ((double)size / ary.length < 0.4){
             resize(size / 2);
         }
         size -= 1;
