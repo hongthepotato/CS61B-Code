@@ -1,54 +1,58 @@
 public class LinkedListDeque<T> {
-    private linked_node sentinel;;
+    private final linkedNode sentinel;;
     private int size;
-    private linked_node last;
-    private  linked_node first;
+    private linkedNode last;
+    private linkedNode first;
 
-    /* Nested class of the naive recursive linked list as the
-    * foundation of linked list deque
-    */
-    private class linked_node {
+    /*
+     * Nested class of the naive recursive linked list as the foundation of linked
+     * list deque
+     */
+    private class linkedNode {
         T item;
-        private linked_node next;
-        private linked_node front;
-        private linked_node (T f, linked_node before, linked_node after) {
+        private linkedNode next;
+        private linkedNode front;
+
+        private linkedNode(final T f, final linkedNode before, final linkedNode after) {
             item = f;
             front = before;
             next = after;
         }
     }
-    /* Constructor function takes in a integer to construct a linked list deque*/
-    public LinkedListDeque(T x) {
+
+    /* Constructor function takes in a integer to construct a linked list deque */
+    public LinkedListDeque(final T x) {
         size = 1;
         /* We don't care what value we have for sentinel node. */
-        sentinel = new linked_node(null, null, null);
-        last = new linked_node(x, sentinel, sentinel);
+        sentinel = new linkedNode(null, null, null);
+        last = new linkedNode(x, sentinel, sentinel);
         sentinel.front = last;
         sentinel.next = last;
         last.next = sentinel;
         first = last;
     }
-    /* Constructor function takes void to construct an empty linked list deque*/
+
+    /* Constructor function takes void to construct an empty linked list deque */
     public LinkedListDeque() {
         size = 0;
-        sentinel = new linked_node(null, null, null);
+        sentinel = new linkedNode(null, null, null);
         sentinel.front = sentinel;
         sentinel.next = sentinel;
         last = sentinel;
         first = last;
     }
 
-    public void addLast(T x) {
+    public void addLast(final T x) {
         size += 1;
-        last.next = new linked_node(x, last, sentinel);
+        last.next = new linkedNode(x, last, sentinel);
         sentinel.front = last.next;
         last = sentinel.front;
         first = sentinel.next;
     }
 
-    public void addFirst(T x) {
+    public void addFirst(final T x) {
         size += 1;
-        first.front = new linked_node(x, sentinel, first);
+        first.front = new linkedNode(x, sentinel, first);
         sentinel.next = first.front;
         first = sentinel.next;
         last = sentinel.front;
@@ -63,21 +67,25 @@ public class LinkedListDeque<T> {
     }
 
     public void printDeque() {
-        linked_node p = sentinel;
+        linkedNode p = sentinel;
         while (p.next != sentinel) {
             System.out.print(p.next.item);
             System.out.print(" ");
             p = p.next;
         }
     }
-    /* Update both first and last pointer to sentinel.next and sentinel.front respectively.*/
+
+    /*
+     * Update both first and last pointer to sentinel.next and sentinel.front
+     * respectively.
+     */
     public T removeFirst() {
-            
+
         if (size == 0) {
             return null;
         }
         size -= 1;
-        T remove = first.item;
+        final T remove = first.item;
         first = first.next;
         first.front.next = null;
         first.front.front = null;
@@ -92,7 +100,7 @@ public class LinkedListDeque<T> {
             return null;
         }
         size -= 1;
-        T remove = last.item;
+        final T remove = last.item;
         last = last.front;
         last.next.front = null;
         last.next.next = null;
@@ -102,11 +110,11 @@ public class LinkedListDeque<T> {
         return remove;
     }
 
-    public T get(int index) {
+    public T get(final int index) {
         if (index > size) {
             return null;
         }
-        linked_node ptr = sentinel;
+        linkedNode ptr = sentinel;
         int iter = 0;
         while (iter <= index) {
             ptr = ptr.next;
@@ -115,8 +123,8 @@ public class LinkedListDeque<T> {
         return ptr.item;
     }
 
-    /* This get recursive function has not been implemented*/
-    public T getRecursive(int index) {
+    /* This get recursive function has not been implemented */
+    public T getRecursive(final int index) {
         return null;
     }
 }
