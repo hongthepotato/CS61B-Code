@@ -10,9 +10,9 @@ public class ArrayDeque<T> {
     }
 
     private void resize(int capacity) {
-        T [] new_ary = (T []) new Object[capacity];
-        System.arraycopy(ary, 0, new_ary, 0, size);
-        ary = new_ary;
+        T [] newAry = (T []) new Object[capacity];
+        System.arraycopy(ary, 0, newAry, 0, size);
+        ary = newAry;
     }
 
     public void addLast(T x) {
@@ -30,9 +30,9 @@ public class ArrayDeque<T> {
         if (size == ary.length) {
             resize(2 * size);
         }
-        T [] new_ary = (T []) new Object[size + 1];
-        System.arraycopy(ary, 0, new_ary, 1, size);
-        ary = new_ary;
+        T [] newAry = (T []) new Object[size + 1];
+        System.arraycopy(ary, 0, newAry, 1, size);
+        ary = newAry
         size += 1;
         ary[0] = x;
     }
@@ -45,7 +45,7 @@ public class ArrayDeque<T> {
         return size == 0;
     }
 
-    public void printDeque(){
+    public void printDeque() {
         for (int i = 0; i <= size - 1; ++i)
         System.out.println(ary[i]);
     }
@@ -57,30 +57,30 @@ public class ArrayDeque<T> {
         return ary[index];
     }
 
-    public T removeLast(){
+    public T removeLast() {
         if (size == 0) {
             return null;
         }
-        T num = ary[size - 1];
-        if ((double)size / ary.length < 0.4) {
+        T removedElement = ary[size - 1];
+        if ((double) size / ary.length < 0.4) {
             resize(ary.length / 2);
         }
         size -= 1;
-        return num;
+        return removedElement;
     }
 
-    public T removeFirst(){
+    public T removeFirst() {
         if (size == 0) {
             return null;
         }
-        T num = ary[0];
-        T [] new_ary = (T []) new Object[size];
-        System.arraycopy(ary, 1, new_ary, 0, size - 1);
-        ary = new_ary;
-        if ((double)size / ary.length < 0.4){
+        T removedElement = ary[0];
+        T [] newAry = (T []) new Object[size];
+        System.arraycopy(ary, 1, newAry, 0, size - 1);
+        ary = newAry;
+        if ((double)size / ary.length < 0.4) {
             resize(size / 2);
         }
         size -= 1;
-        return num;
+        return removedElement;
     }
 }
