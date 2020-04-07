@@ -63,7 +63,7 @@ public class ArrayDeque<T> {
         }
         T num = ary[size - 1];
         if ((double)size / ary.length < 0.4) {
-            resize(size / 2);
+            resize(ary.length / 2);
         }
         size -= 1;
         return num;
