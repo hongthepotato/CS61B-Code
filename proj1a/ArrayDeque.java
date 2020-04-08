@@ -46,8 +46,9 @@ public class ArrayDeque<T> {
     }
 
     public void printDeque() {
-        for (int i = 0; i <= size - 1; ++i)
-        System.out.println(ary[i]);
+        for (int i = 0; i <= size - 1; ++i) {
+            System.out.println(ary[i]);
+        }
     }
 
     public T get(int index) {
@@ -77,7 +78,7 @@ public class ArrayDeque<T> {
         T [] newAry = (T []) new Object[size];
         System.arraycopy(ary, 1, newAry, 0, size - 1);
         ary = newAry;
-        if ((double)size / ary.length < 0.4) {
+        if ((double) size / ary.length < 0.4) {
             resize(size / 2);
         }
         size -= 1;

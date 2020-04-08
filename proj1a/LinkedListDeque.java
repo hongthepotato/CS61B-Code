@@ -1,19 +1,19 @@
 public class LinkedListDeque<T> {
-    private final linkedNode sentinel;;
+    private final LinkedNode sentinel;;
     private int size;
-    private linkedNode last;
-    private linkedNode first;
+    private LinkedNode last;
+    private LinkedNode first;
 
     /*
      * Nested class of the naive recursive linked list as the foundation of linked
      * list deque
      */
-    private class linkedNode {
+    private class LinkedNode {
         T item;
-        private linkedNode next;
-        private linkedNode front;
+        private LinkedNode next;
+        private LinkedNode front;
 
-        private linkedNode(final T f, final linkedNode before, final linkedNode after) {
+        private LinkedNode(final T f, final LinkedNode before, final LinkedNode after) {
             item = f;
             front = before;
             next = after;
@@ -24,8 +24,8 @@ public class LinkedListDeque<T> {
     public LinkedListDeque(final T x) {
         size = 1;
         /* We don't care what value we have for sentinel node. */
-        sentinel = new linkedNode(null, null, null);
-        last = new linkedNode(x, sentinel, sentinel);
+        sentinel = new LinkedNode(null, null, null);
+        last = new LinkedNode(x, sentinel, sentinel);
         sentinel.front = last;
         sentinel.next = last;
         last.next = sentinel;
@@ -35,7 +35,7 @@ public class LinkedListDeque<T> {
     /* Constructor function takes void to construct an empty linked list deque */
     public LinkedListDeque() {
         size = 0;
-        sentinel = new linkedNode(null, null, null);
+        sentinel = new LinkedNode(null, null, null);
         sentinel.front = sentinel;
         sentinel.next = sentinel;
         last = sentinel;
@@ -44,7 +44,7 @@ public class LinkedListDeque<T> {
 
     public void addLast(final T x) {
         size += 1;
-        last.next = new linkedNode(x, last, sentinel);
+        last.next = new LinkedNode(x, last, sentinel);
         sentinel.front = last.next;
         last = sentinel.front;
         first = sentinel.next;
@@ -52,7 +52,7 @@ public class LinkedListDeque<T> {
 
     public void addFirst(final T x) {
         size += 1;
-        first.front = new linkedNode(x, sentinel, first);
+        first.front = new LinkedNode(x, sentinel, first);
         sentinel.next = first.front;
         first = sentinel.next;
         last = sentinel.front;
@@ -67,7 +67,7 @@ public class LinkedListDeque<T> {
     }
 
     public void printDeque() {
-        linkedNode p = sentinel;
+        LinkedNode p = sentinel;
         while (p.next != sentinel) {
             System.out.print(p.next.item);
             System.out.print(" ");
@@ -114,7 +114,7 @@ public class LinkedListDeque<T> {
         if (index > size) {
             return null;
         }
-        linkedNode ptr = sentinel;
+        LinkedNode ptr = sentinel;
         int iter = 0;
         while (iter <= index) {
             ptr = ptr.next;
