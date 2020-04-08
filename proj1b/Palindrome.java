@@ -37,7 +37,7 @@ public class Palindrome {
     public boolean isPalindrome(String word, CharacterComparator cc) {
         String wordOfLowCase = word.toLowerCase();
         for (int i = 0; i < wordOfLowCase.length() / 2; ++i) {
-            if (wordOfLowCase.charAt(i) != wordOfLowCase.charAt(word.length() - 1 - i) && !cc.equalChars(wordOfLowCase.charAt(i), wordOfLowCase.charAt(word.length() - i - 1))) {
+            if (!cc.equalChars(wordOfLowCase.charAt(i), wordOfLowCase.charAt(word.length() - i - 1))) {
                 return false;
             }
         }
