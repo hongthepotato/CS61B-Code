@@ -21,16 +21,16 @@ public class LinkedListDeque<T> {
     }
 
     /* Constructor function takes in a integer to construct a linked list deque */
-    public LinkedListDeque(final T x) {
-        size = 1;
-        /* We don't care what value we have for sentinel node. */
-        sentinel = new LinkedNode(null, null, null);
-        last = new LinkedNode(x, sentinel, sentinel);
-        sentinel.front = last;
-        sentinel.next = last;
-        last.next = sentinel;
-        first = last;
-    }
+    // public LinkedListDeque(final T x) {
+    //     size = 1;
+    //     /* We don't care what value we have for sentinel node. */
+    //     sentinel = new LinkedNode(null, null, null);
+    //     last = new LinkedNode(x, sentinel, sentinel);
+    //     sentinel.front = last;
+    //     sentinel.next = last;
+    //     last.next = sentinel;
+    //     first = last;
+    // }
 
     /* Constructor function takes void to construct an empty linked list deque */
     public LinkedListDeque() {
