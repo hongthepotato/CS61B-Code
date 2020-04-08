@@ -32,7 +32,7 @@ public class ArrayDeque<T> {
         }
         T [] newAry = (T []) new Object[size + 1];
         System.arraycopy(ary, 0, newAry, 1, size);
-        ary = newAry
+        ary = newAry;
         size += 1;
         ary[0] = x;
     }
